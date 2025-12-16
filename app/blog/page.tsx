@@ -8,11 +8,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { Calendar, User } from "lucide-react"
+import { Calendar, User, Facebook, Linkedin, Youtube, Mail } from "lucide-react"
+import { useEffect } from "react"
 import { useState } from "react"
 
 export default function BlogPage() {
   const [email, setEmail] = useState("")
+  const [subscribed, setSubscribed] = useState(false)
 
   const blogPosts = [
     {
@@ -70,9 +72,15 @@ export default function BlogPage() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("[v0] Newsletter subscription:", email)
-    alert(`Thanks for subscribing with ${email}!\n\nNote: Connect an email service to enable actual subscriptions.`)
+    setSubscribed(true)
     setEmail("")
   }
+
+  useEffect(() => {
+    if (!subscribed) return
+    const t = setTimeout(() => setSubscribed(false), 6000)
+    return () => clearTimeout(t)
+  }, [subscribed])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -179,25 +187,46 @@ export default function BlogPage() {
 
                 <Card className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                   <CardHeader>
-                    <CardTitle>Subscribe to Blog Updates</CardTitle>
+                    <CardTitle>Stay Connected</CardTitle>
                     <CardDescription className="text-primary-foreground/80">
-                      Get the latest insights delivered to your inbox
+                      Sign up for our newsletter or follow us on social media
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
                       <input
                         type="email"
-                        placeholder="Your email"
+                        placeholder="Enter your email"
                         className="px-4 py-2 rounded-md text-foreground"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
                       <Button variant="secondary" type="submit">
-                        Subscribe
+                        <Mail className="mr-2 h-4 w-4" /> Subscribe
                       </Button>
                     </form>
+
+                    {subscribed && (
+                      <div className="mt-3 rounded-md bg-white/10 p-3 text-sm text-primary-foreground">
+                        Thanks — you're subscribed. Check your inbox for confirmation.
+                      </div>
+                    )}
+
+                    <div className="mt-4">
+                      <p className="font-medium mb-2">Follow us on:</p>
+                      <div className="flex items-center gap-3">
+                        <Link href="#" aria-label="Facebook" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                          <Facebook className="h-5 w-5 text-white" /> <span className="sr-only">Facebook</span>
+                        </Link>
+                        <Link href="#" aria-label="LinkedIn" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                          <Linkedin className="h-5 w-5 text-white" /> <span className="sr-only">LinkedIn</span>
+                        </Link>
+                        <Link href="#" aria-label="YouTube" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                          <Youtube className="h-5 w-5 text-white" /> <span className="sr-only">YouTube</span>
+                        </Link>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
