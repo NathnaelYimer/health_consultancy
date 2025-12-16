@@ -4,40 +4,68 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated theme to match health consultancy with purple accent and neutral tones */
-  --background: oklch(0.99 0.005 95);
-  --foreground: oklch(0.25 0.01 280);
+  /* Premium Modern Color System - Indigo (Trust) + Emerald (Health) */
+  --background: oklch(1 0 0); /* Pure White */
+  --foreground: oklch(0.15 0.01 0); /* Gray 900 - High contrast */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.01 280);
+  --card-foreground: oklch(0.15 0.01 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.01 280);
-  --primary: oklch(0.45 0.18 285);
-  --primary-foreground: oklch(0.99 0.005 95);
-  --secondary: oklch(0.72 0.12 75);
-  --secondary-foreground: oklch(0.15 0.01 280);
-  --muted: oklch(0.96 0.005 260);
-  --muted-foreground: oklch(0.5 0.01 280);
-  --accent: oklch(0.72 0.12 75);
-  --accent-foreground: oklch(0.15 0.01 280);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0.005 260);
-  --input: oklch(0.9 0.005 260);
-  --ring: oklch(0.45 0.18 285);
-  --chart-1: oklch(0.45 0.18 285);
-  --chart-2: oklch(0.72 0.12 75);
-  --chart-3: oklch(0.55 0.15 190);
-  --chart-4: oklch(0.65 0.1 320);
-  --chart-5: oklch(0.6 0.12 160);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --popover-foreground: oklch(0.15 0.01 0);
+  
+  /* Primary: Indigo 600 - Trust, Professionalism */
+  --primary: oklch(0.5 0.15 270); /* #6366F1 equivalent */
+  --primary-foreground: oklch(0.99 0 0);
+  
+  /* Secondary: Emerald 500 - Health, Growth */
+  --secondary: oklch(0.65 0.15 160); /* #10B981 equivalent */
+  --secondary-foreground: oklch(0.99 0 0);
+  
+  /* Muted: Gray 50 - Subtle backgrounds */
+  --muted: oklch(0.98 0.002 0);
+  --muted-foreground: oklch(0.45 0.01 0); /* Gray 600 */
+  
+  /* Accent: Amber 500 - Attention, Highlights */
+  --accent: oklch(0.7 0.15 75); /* #F59E0B equivalent */
+  --accent-foreground: oklch(0.15 0.01 0);
+  
+  /* Destructive: Red 500 */
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  
+  /* Borders & Inputs */
+  --border: oklch(0.9 0.005 0); /* Gray 200 */
+  --input: oklch(0.9 0.005 0);
+  --ring: oklch(0.5 0.15 270); /* Primary color for focus rings */
+  
+  /* Chart Colors */
+  --chart-1: oklch(0.5 0.15 270); /* Indigo */
+  --chart-2: oklch(0.65 0.15 160); /* Emerald */
+  --chart-3: oklch(0.7 0.15 75); /* Amber */
+  --chart-4: oklch(0.55 0.15 200); /* Blue */
+  --chart-5: oklch(0.6 0.12 320); /* Purple */
+  
+  /* Border Radius - Modern, Soft */
+  --radius: 0.75rem; /* 12px - More modern than 8px */
+  
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.002 0);
+  --sidebar-foreground: oklch(0.15 0.01 0);
+  --sidebar-primary: oklch(0.5 0.15 270);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.002 0);
+  --sidebar-accent-foreground: oklch(0.15 0.01 0);
+  --sidebar-border: oklch(0.9 0.005 0);
+  --sidebar-ring: oklch(0.5 0.15 270);
+  
+  /* Spacing Scale (4px grid) */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+  --spacing-3xl: 4rem; /* 64px */
+  --spacing-4xl: 6rem; /* 96px */
 }
 
 .dark {
@@ -131,7 +159,11 @@
   background-size: 20px 20px;
 }
 
-/* Premium Design Enhancements */
+/* ============================================
+   PREMIUM DESIGN SYSTEM - ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* Smooth, Premium Animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -150,27 +182,29 @@
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% {
-    box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.6);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Utilities */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -186,13 +220,43 @@
   animation: shimmer 3s infinite;
 }
 
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ============================================
+   PREMIUM COMPONENT STYLES
+   ============================================ */
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Premium Card Styles */
+.premium-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: var(--primary);
+}
+
+/* Gradient Text */
 .gradient-text {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
@@ -200,14 +264,16 @@
   background-clip: text;
 }
 
+/* Hover Lift Effect */
 .hover-lift {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-4px);
 }
 
+/* Card Glow Effect */
 .card-glow {
   position: relative;
   overflow: hidden;
@@ -220,23 +286,86 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, oklch(0.5 0.15 270 / 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .card-glow:hover::before {
   opacity: 1;
 }
 
+/* ============================================
+   ACCESSIBILITY & UX ENHANCEMENTS
+   ============================================ */
+
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced focus states */
+/* Enhanced focus states - WCAG AA compliant */
 *:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Touch-friendly targets (minimum 44x44px) */
+button,
+a,
+input[type="button"],
+input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ============================================
+   TYPOGRAPHY ENHANCEMENTS
+   ============================================ */
+
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Improved line heights for readability */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animations */
+.premium-card,
+.hover-lift,
+.card-glow {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize font loading */
+@font-face {
+  font-display: swap;
 }
