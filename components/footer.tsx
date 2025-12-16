@@ -80,22 +80,37 @@ export function Footer() {
 
           {/* Newsletter / Contact */}
           <div className="lg:pt-2">
-            <h4 className="font-semibold mb-3">Stay Informed</h4>
-            <p className="text-sm text-slate-300 mb-4">Subscribe to our newsletter for evidence summaries and updates.</p>
+            <h4 className="font-semibold mb-3">Stay Connected</h4>
+            <p className="text-sm text-slate-300 mb-4">Sign up for our newsletter or follow us on social media</p>
 
             <form action="/api/contact" method="post" className="flex flex-col sm:flex-row gap-3">
               <input type="hidden" name="type" value="newsletter" />
               <label htmlFor="email" className="sr-only">Email</label>
-              <input id="email" name="email" type="email" required placeholder="you@example.com" className="flex-1 rounded-md border border-white/10 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+              <input id="email" name="email" type="email" required placeholder="Enter your email" className="flex-1 rounded-md border border-white/10 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary" />
               <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-semibold text-white shadow hover:brightness-105">
                 <Mail className="h-4 w-4" /> Subscribe
               </button>
             </form>
 
             <div className="mt-6 text-sm text-slate-300">
-              <p>Hawassa, Ethiopia</p>
-              <p className="mt-1">Phone: +251 912 445575</p>
-              <p className="mt-1">Email: <a href="mailto:abel.gedefaw@yahoo.com" className="hover:text-white">abel.gedefaw@yahoo.com</a></p>
+              <p className="font-medium">Follow us on:</p>
+              <div className="flex items-center gap-3 mt-2">
+                <Link href="#" aria-label="Facebook" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                  <Facebook className="h-5 w-5 text-slate-100" /> <span className="sr-only">Facebook</span>
+                </Link>
+                <Link href="#" aria-label="LinkedIn" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                  <Linkedin className="h-5 w-5 text-slate-100" /> <span className="sr-only">LinkedIn</span>
+                </Link>
+                <Link href="#" aria-label="YouTube" className="inline-flex items-center gap-2 p-2 rounded-md bg-white/5 hover:bg-white/10 transition">
+                  <Youtube className="h-5 w-5 text-slate-100" /> <span className="sr-only">YouTube</span>
+                </Link>
+              </div>
+
+              <div className="mt-4">
+                <p>Hawassa, Ethiopia</p>
+                <p className="mt-1">Phone: +251 912 445575</p>
+                <p className="mt-1">Email: <a href="mailto:abel.gedefaw@yahoo.com" className="hover:text-white">abel.gedefaw@yahoo.com</a></p>
+              </div>
             </div>
           </div>
         </div>
