@@ -11,33 +11,33 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b-2 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-sm">
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
           <Image src="/logo.png" alt="Dr. Abel Health Consulting" width={200} height={60} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex lg:items-center lg:gap-8">
-          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+        <div className="hidden lg:flex lg:items-center lg:gap-6">
+          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Home
           </Link>
-          <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             About Us
           </Link>
-          <Link href="/projects" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/projects" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Projects
           </Link>
-          <Link href="/services" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/services" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Services
           </Link>
-          <Link href="/publications" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/publications" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Publications
           </Link>
-          <Link href="/blog" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/blog" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Blog
           </Link>
-          <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-primary/10">
             Contact Us
           </Link>
 
@@ -55,7 +55,7 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button asChild>
+          <Button asChild className="shadow-md hover:shadow-lg transition-all duration-300">
             <Link href="/contact">Request Consultation</Link>
           </Button>
         </div>

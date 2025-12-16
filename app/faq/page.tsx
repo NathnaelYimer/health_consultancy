@@ -85,10 +85,19 @@ export default function FAQPage() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary/10 via-secondary/5 to-background py-20 lg:py-32">
-          <div className="container mx-auto px-4 lg:px-8">
+        <section className="relative bg-gradient-to-br from-primary/10 via-secondary/5 to-background py-20 lg:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">Frequently Asked Questions</h1>
+              <div className="inline-block mb-6 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <span className="text-sm font-semibold text-primary">✨ Common Questions</span>
+              </div>
+              <h1 className="text-4xl lg:text-6xl font-extrabold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground/70 bg-clip-text text-transparent leading-tight">
+                Frequently Asked Questions
+              </h1>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
                 Find answers to common questions about our services and expertise
               </p>
@@ -101,30 +110,40 @@ export default function FAQPage() {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-12">
               {faqs.map((category) => (
-                <div key={category.category}>
-                  <h2 className="text-3xl font-bold mb-6">{category.category}</h2>
-                  <Accordion type="single" collapsible className="w-full">
-                    {category.questions.map((faq, index) => (
-                      <AccordionItem key={index} value={`${category.category}-${index}`}>
-                        <AccordionTrigger className="text-left">{faq.q}</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
+                <Card key={category.category} className="border-2 hover:shadow-lg transition-all duration-300">
+                  <CardHeader>
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                      {category.category}
+                    </h2>
+                  </CardHeader>
+                  <CardContent>
+                    <Accordion type="single" collapsible className="w-full">
+                      {category.questions.map((faq, index) => (
+                        <AccordionItem key={index} value={`${category.category}-${index}`} className="border-b-2">
+                          <AccordionTrigger className="text-left hover:text-primary transition-colors font-medium">
+                            {faq.q}
+                          </AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground leading-relaxed pt-2">
+                            {faq.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </CardContent>
+                </Card>
               ))}
             </div>
 
             {/* Contact CTA */}
-            <Card className="max-w-2xl mx-auto mt-16">
+            <Card className="max-w-2xl mx-auto mt-16 bg-gradient-to-br from-primary/5 to-transparent border-2 hover:shadow-xl transition-all duration-300">
               <CardHeader>
-                <CardTitle>Still Have Questions?</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-2xl">Still Have Questions?</CardTitle>
+                <CardDescription className="text-base">
                   We're here to help. Get in touch with our team for personalized assistance.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button size="lg" asChild>
+                <Button size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300" asChild>
                   <Link href="/contact">Contact Us</Link>
                 </Button>
               </CardContent>
