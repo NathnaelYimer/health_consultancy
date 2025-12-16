@@ -111,12 +111,12 @@ export default function ProjectsPage() {
               {projectCategories.map((category) => (
                 <div key={category.title}>
                   <h2 className="text-2xl lg:text-3xl font-bold mb-6">{category.title}</h2>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="flex gap-6 overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory">
                     {category.projects.map((project) => (
-                      <article key={project.name} className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition p-5">
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary">{project.name}</h3>
+                      <article key={project.name} className="min-w-[520px] snap-start flex-shrink-0 group bg-white rounded-2xl shadow-sm hover:shadow-lg transition p-5">
+                        <div className="flex items-center justify-between gap-6">
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold mb-1 group-hover:text-primary">{project.name}</h3>
                             <p className="text-sm text-slate-600">{project.description}</p>
                           </div>
                           <div className="flex flex-col items-end gap-2">
