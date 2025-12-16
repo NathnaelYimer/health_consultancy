@@ -91,7 +91,7 @@ export default function PublicationsPage() {
           </div>
         </section>
 
-        <section className="py-8 bg-muted/50">
+        <section className="py-8 bg-slate-50">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-2xl mx-auto">
               <div className="flex gap-4">
@@ -140,36 +140,30 @@ export default function PublicationsPage() {
                 <p className="text-muted-foreground">No publications found matching your search.</p>
               </div>
             ) : (
-              <div className="space-y-6 max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
                 {filteredPublications.map((pub) => (
-                  <Card key={pub.id}>
-                    <CardHeader>
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <CardTitle className="text-xl mb-2">{pub.title}</CardTitle>
-                          <CardDescription>
-                            <strong>{pub.authors}</strong>
-                            <br />
-                            Published in: {pub.journal} ({pub.year})<br />
-                            Type: {pub.type}
-                          </CardDescription>
+                  <article key={pub.id} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-5">
+                    <div className="flex gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-1">{pub.title}</h3>
+                        <p className="text-sm text-slate-600 mb-2">
+                          <strong>{pub.authors}</strong> — {pub.journal} ({pub.year})
+                        </p>
+                        <p className="text-sm text-slate-500 mb-4">{pub.summary}</p>
+                        <div className="flex items-center gap-3">
+                          <Button variant="outline" size="sm" onClick={() => handleDownload(pub.pdfUrl, pub.title)}>
+                            <Download className="h-4 w-4 mr-2" /> Download PDF
+                          </Button>
+                          <Button variant="link" size="sm" asChild>
+                            <Link href={`/publications/${pub.id}`}>Read Summary →</Link>
+                          </Button>
                         </div>
-                        <FileText className="h-10 w-10 text-primary flex-shrink-0" />
                       </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground mb-4">{pub.summary}</p>
-                      <div className="flex gap-4">
-                        <Button variant="outline" size="sm" onClick={() => handleDownload(pub.pdfUrl, pub.title)}>
-                          <Download className="h-4 w-4 mr-2" />
-                          Download PDF
-                        </Button>
-                        <Button variant="link" size="sm" asChild>
-                          <Link href={`/publications/${pub.id}`}>Read Summary →</Link>
-                        </Button>
+                      <div className="w-20 h-20 flex items-center justify-center bg-primary/5 rounded-lg">
+                        <FileText className="h-8 w-8 text-primary" />
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </article>
                 ))}
               </div>
             )}

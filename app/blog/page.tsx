@@ -92,15 +92,18 @@ export default function BlogPage() {
         </section>
 
         {/* Blog Posts */}
-        <section className="py-20 lg:py-28">
+        <section className="py-16 lg:py-24">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Main Content */}
               <div className="lg:col-span-2 space-y-8">
                 {blogPosts.map((post) => (
-                  <Card key={post.id} className="overflow-hidden">
-                    <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-64 object-cover" />
-                    <CardHeader>
+                  <article key={post.id} className="overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-lg transition">
+                    <div className="relative h-64 w-full">
+                      <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    </div>
+                    <div className="p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
                         {post.tags.map((tag) => (
                           <Badge key={tag} variant="secondary">
@@ -108,27 +111,21 @@ export default function BlogPage() {
                           </Badge>
                         ))}
                       </div>
-                      <CardTitle className="text-2xl mb-2">{post.title}</CardTitle>
-                      <CardDescription>
-                        <div className="flex items-center gap-4 text-sm">
-                          <span className="flex items-center gap-1">
-                            <User className="h-4 w-4" />
-                            {post.author}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            {post.date}
-                          </span>
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                      <h3 className="text-2xl font-semibold mb-2">{post.title}</h3>
+                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                        <span className="flex items-center gap-2">
+                          <User className="h-4 w-4" /> {post.author}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4" /> {post.date}
+                        </span>
+                      </div>
+                      <p className="text-slate-600 mb-4">{post.excerpt}</p>
                       <Button variant="link" className="p-0" asChild>
                         <Link href={`/blog/${post.id}`}>Read More →</Link>
                       </Button>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </article>
                 ))}
               </div>
 
@@ -180,7 +177,7 @@ export default function BlogPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-primary text-primary-foreground">
+                <Card className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                   <CardHeader>
                     <CardTitle>Subscribe to Blog Updates</CardTitle>
                     <CardDescription className="text-primary-foreground/80">
