@@ -1,18 +1,23 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { HeroSection } from "@/components/home/hero-section";
+import { AboutSection } from "@/components/home/about-section";
+import { ServicesSection } from "@/components/home/services-section";
+import { LeadershipSection } from "@/components/home/leadership-section";
+import { WhyChooseUs } from "@/components/home/why-choose-us";
+import { WhyPartnerSection } from "@/components/home/why-partner-section";
+import { StatsSection } from "@/components/home/stats-section";
+import { CTASection } from "@/components/home/cta-section";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
-        <h1 className="text-4xl font-bold mb-8">Welcome to Health Consulting</h1>
-        <div className="space-y-4">
-          <p className="text-lg">Professional healthcare consulting services</p>
-          <Button asChild>
-            <Link href="/contact">Contact Us</Link>
-          </Button>
-        </div>
-      </div>
+    <main className="flex min-h-screen flex-col items-center">
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <LeadershipSection />
+      <WhyChooseUs />
+      <WhyPartnerSection />
+      <StatsSection />
+      <CTASection />
     </main>
   );
 }

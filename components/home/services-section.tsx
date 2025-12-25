@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
   Microscope, 
   ClipboardCheck, 
@@ -92,66 +92,92 @@ export function ServicesSection() {
   ]
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900">
+      <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Comprehensive Services</h2>
-          <p className="text-lg text-muted-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Comprehensive Services
+          </h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Delivering end-to-end solutions that bridge global standards with local expertise
           </p>
         </div>
 
-        {pillars.map((pillar, pillarIndex) => (
-          <div key={pillarIndex} className="mb-16">
-            <div className="text-center mb-10">
-              <h3 className="text-2xl font-bold text-primary mb-2">{pillar.title}</h3>
-              <p className="text-muted-foreground max-w-4xl mx-auto">{pillar.description}</p>
+        <div className="space-y-20">
+          {pillars.map((pillar, pillarIndex) => (
+            <div key={pillarIndex} className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-blue-800 dark:text-blue-400 mb-2">
+                  {pillar.title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+                  {pillar.description}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {pillar.services.map((service, serviceIndex) => (
+                  <Card 
+                    key={`${pillarIndex}-${serviceIndex}`} 
+                    className="h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group border border-gray-200 dark:border-gray-700"
+                  >
+                    <CardHeader>
+                      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30 mb-4 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 transition-colors">
+                        {service.icon}
+                      </div>
+                      <CardTitle className="text-xl text-gray-900 dark:text-white">
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {pillar.services.map((service, serviceIndex) => (
-                <Card key={`${pillarIndex}-${serviceIndex}`} className="h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
-                  <CardHeader className="pb-2">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
-                      {service.icon}
-                    </div>
-                    <CardTitle className="text-lg">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <div className="text-sm text-primary font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Learn more
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
-                        <path d="M5 12h14"/>
-                        <path d="m12 5 7 7-7 7"/>
-                      </svg>
-                    </div>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </div>
-        ))}
-        
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-semibold mb-6">Our Commitment to Quality</h3>
-          <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[/* eslint-disable @typescript-eslint/no-unused-vars */
-              { text: "ICH-GCP (E6 R2/R3)", icon: <BookOpenCheck className="w-5 h-5 mx-auto mb-2" /> },
-              { text: "WHO & EFDA Regulations", icon: <FileText className="w-5 h-5 mx-auto mb-2" /> },
-              { text: "Declaration of Helsinki", icon: <ShieldCheck className="w-5 h-5 mx-auto mb-2" /> },
-              { text: "International GMP & GDP", icon: <Gauge className="w-5 h-5 mx-auto mb-2" /> }
+          ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+            Quality & Compliance Standards
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                title: "ICH-GCP (E6 R2/R3)",
+                icon: <BookOpenCheck className="w-8 h-8 mx-auto mb-3 text-blue-600 dark:text-blue-400" />
+              },
+              {
+                title: "WHO & EFDA Regulations",
+                icon: <FileText className="w-8 h-8 mx-auto mb-3 text-blue-600 dark:text-blue-400" />
+              },
+              {
+                title: "Declaration of Helsinki",
+                icon: <ShieldCheck className="w-8 h-8 mx-auto mb-3 text-blue-600 dark:text-blue-400" />
+              },
+              {
+                title: "International GMP & GDP",
+                icon: <Gauge className="w-8 h-8 mx-auto mb-3 text-blue-600 dark:text-blue-400" />
+              }
             ].map((item, index) => (
-              <div key={index} className="bg-muted/30 p-4 rounded-lg">
-                <div className="text-primary">{item.icon}</div>
-                <p className="text-sm font-medium">{item.text}</p>
+              <div 
+                key={index} 
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow"
+              >
+                <div className="mb-3">{item.icon}</div>
+                <h4 className="font-medium text-gray-900 dark:text-white">
+                  {item.title}
+                </h4>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

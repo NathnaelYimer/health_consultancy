@@ -1,31 +1,43 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-b from-blue-50 to-white py-20 lg:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float pointer-events-none"></div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-            <span>Ethiopia's First Full-Service Clinical Research Organization</span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-balance text-foreground leading-tight tracking-tight">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center space-y-6 text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             TMB Health Consultancy
           </h1>
           
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary mb-6">
-            Advancing Regulatory Excellence in Africa
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 md:text-3xl">
+            Establishing Ethiopia's First Full-Service Clinical Research Organization
           </h2>
           
-          <p className="text-lg sm:text-xl text-muted-foreground mb-10 text-pretty leading-relaxed max-w-4xl mx-auto">
-            TMB Health Consultancy is an Ethiopia-based clinical research and regulatory firm working toward establishing the first full-service Clinical Research Organization (CRO) in Ethiopia, while providing comprehensive Good Manufacturing Practice (GMP), Good Distribution Practice (GDP), Quality Management System (QMS), Drug Registration and Importing, and regulatory compliance consulting.
-          </p>
+          <h3 className="text-xl text-blue-700 dark:text-blue-300 font-medium">
+            Advancing Regulatory Excellence in Africa
+          </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mt-6 mb-8">
+              TMB Health Consultancy (TMB) is an Ethiopia-based clinical research and regulatory firm
+              working toward establishing the first full-service Clinical Research Organization (CRO) in
+              Ethiopia, while providing comprehensive Good Manufacturing Practice (GMP), Good
+              Distribution Practice (GDP), Quality Management System (QMS), Drug Registration and
+              Importing, and regulatory compliance consulting during clinical research and drug
+              manufacturing, importing, and distribution for pharmaceutical companies, sponsors, academia,
+              research organizations, government/non-government agencies.
+            </p>
+            
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+              Built on a deep national regulatory system, quality improvement strategies, and leadership
+              and real-world clinical trial implementation experience, TMB bridges global clinical research
+              standards with Ethiopia's regulatory and health system context.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl mt-8">
             {[
               "CRO Development & Clinical Research Services",
               "Regulatory, GMP, GDP & Quality Systems Consulting",
